@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1545917616 source:d:\ma_fuzhong\7.32\main.cpp
+	<iostream>
+	<array>
+	<iomanip>
+
