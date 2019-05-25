@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1558791857 source:d:\ma_fuzhong\12.13\main.cpp
+	<iostream>
+	<vector>
+	"package.h"
+	"twodaypackage.h"
+	"overnightpackage.h"
+
+1558792375 d:\ma_fuzhong\12.13\include\package.h
+	<iostream>
+
+1558792375 d:\ma_fuzhong\12.13\include\twodaypackage.h
+	<iostream>
+	"package.h"
+
+1558792375 d:\ma_fuzhong\12.13\include\overnightpackage.h
+	<iostream>
+	"package.h"
+
