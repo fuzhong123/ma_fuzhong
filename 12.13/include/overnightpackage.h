@@ -1,23 +1,21 @@
-#ifndef OVERNIGHTPACKAGE_H
-#define OVERNIGHTPACKAGE_H
-#include<iostream>
-#include"package.h"
+#ifndef OVERNIGHT_H
+#define OVERNIGHT_H
+
+#include "Package.h"
 
 class OvernightPackage : public Package
 {
 public:
-    OvernightPackage(const std::string & p_n, const std::string &r_n, const std::string &p_l,const std::string &r_l,
-                  int p_c,int r_c,int w,int p,int o_p);
+   OvernightPackage( const string &, const string &, const string &,
+      const string &, int, const string &, const string &, const string &,
+      const string &, int, double, double, double );
 
-    double calculate_cost();
-    void set_overnight_price(int o_p);
-    int get_overnight_price() const;
+   void setOvernightFeePerOunce( double );
+   double getOvernightFeePerOunce() const;
 
-    virtual void print() const override;
-
+   double calculateCost() const;
 private:
-    int overnight_price;
-
-
+   double overnightFeePerOunce;
 };
+
 #endif

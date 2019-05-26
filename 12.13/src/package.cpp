@@ -1,129 +1,113 @@
-#include<iostream>
-#include"package.h"
-using namespace std;
-
-Package::Package(const string & p_n, const string &r_n, const string &p_l,const string &r_l,
-        int p_c,int r_c,int w,int p)
-//      :weight(w>0? w:throw("weight must>0")),
-//     price(p>0? p:throw("weight must>0"))
+#include "Package.h"
+Package::Package( const string &sName, const string &sAddress,
+   const string &sCity, const string &sState, int sZIP,
+   const string &rName, const string &rAddress, const string &rCity,
+   const string &rState, int rZIP, double w, double cost )
+   : senderName( sName ), senderAddress( sAddress ), senderCity( sCity ),
+     senderState( sState ), senderZIP( sZIP ), recipientName( rName ),
+     recipientAddress( rAddress ), recipientCity( rCity ),
+     recipientState( rState ), recipientZIP( rZIP )
 {
-    if((w<0)||(p<0))  cout<<"weight & price must >0";
-    else
-    {
-        set_weight(w);
-        set_price(p);
-    }
-    calculate_cost();
-    set_post_name(p_n);
-    set_receive_name(r_n);
-    set_post_location(p_l);
-    set_receive_location(r_l);
-    set_post_code(p_c);
-    set_receive_code(r_c);
+   setWeight( w );
+   setCostPerOunce( cost );
 }
-
-
-
-//double Package::calculate_cost(int weight,int price)
-void Package::set_weight(int w)
+void Package::setSenderName( const string &name )
 {
-//    weight(w>0? w:throw("weight must>0"));   //重量必须大于零
-    weight=w;
+    senderName = name;
 }
-int Package::get_weight() const
+string Package::getSenderName() const
 {
-    return weight;
+   return senderName;
 }
-
-void Package::set_price(int p)
+void Package::setSenderAddress( const string &address )
 {
-//    price(p>0? p:throw("weight must>0"));   //价格必须大于零
-    price=p;
+   senderAddress = address;
 }
-int Package::get_price() const
+string Package::getSenderAddress() const
 {
-    return price;
+   return senderAddress;
 }
-
-
-double Package::calculate_cost()
+void Package::setSenderCity( const string &city )
 {
-    return get_weight()*get_price();
+   senderCity = city;
 }
-
-
-void Package::set_post_name(const std::string &p_n)
+string Package::getSenderCity() const
 {
-    post_name=p_n;
+   return senderCity;
 }
-
-string Package::get_post_name() const
+void Package::setSenderState( const string &state )
 {
-    return post_name;
+   senderState = state;
 }
-
-void Package::set_receive_name(const std::string &r_n)
+string Package::getSenderState() const
 {
-    receive_name=r_n;
+   return senderState;
 }
-
-string Package::get_receive_name() const
+void Package::setSenderZIP( int zip )
 {
-
-    return receive_name;
+   senderZIP = zip;
 }
-
-void Package::set_post_location(const std::string &p_l)
+int Package::getSenderZIP() const
 {
-    post_location=p_l;
+   return senderZIP;
 }
-
-string Package::get_post_location() const
+void Package::setRecipientName( const string &name )
 {
-    return post_location;
+    recipientName = name;
 }
-
-void Package::set_receive_location(const std::string &r_l)
+string Package::getRecipientName() const
 {
-    receive_location=r_l;
+   return recipientName;
 }
-
-string Package::get_receive_location() const
+void Package::setRecipientAddress( const string &address )
 {
-    return receive_location;
+   recipientAddress = address;
 }
-
-void Package::set_post_code(int p_c)
+string Package::getRecipientAddress() const
 {
-    post_code=p_c;
+   return recipientAddress;
 }
-
-int Package::get_post_code() const
+void Package::setRecipientCity( const string &city )
 {
-    return post_code;
+   recipientCity = city;
 }
-
-void Package::set_receive_code(int r_c)
+string Package::getRecipientCity() const
 {
-    receive_code=r_c;
+   return recipientCity;
 }
-
-int Package::get_receive_code() const
+void Package::setRecipientState( const string &state )
 {
-    return receive_code;
+   recipientState = state;
 }
-
-void Package::print() const
+string Package::getRecipientState() const
 {
-    cout<<"post 1:"<<endl;
-    cout<<"post name: "<<get_post_name()<<endl;
-    cout<<"receive name: "<<get_receive_name()<<endl;
-    cout<<"post location: "<<get_post_location()<<endl;
-    cout<<"receive location: "<<get_receive_location()<<endl;
-    cout<<"post code: "<<get_post_code()<<endl;
-    cout<<"receive code: "<<get_receive_code()<<endl;
-    cout<<"weight: "<<get_weight()<<endl;
-    cout<<"price of each kilo: "<<get_price()<<endl;
-    cout<<"price of all: "<<calculate_cost()<<endl;
-    cout<<endl;
+   return recipientState;
+}
+void Package::setRecipientZIP( int zip )
+{
+   recipientZIP = zip;
+}
+int Package::getRecipientZIP() const
+{
+   return recipientZIP;
+}
+void Package::setWeight( double w )
+{
+   weight = ( w < 0.0 ) ? 0.0 : w;
+}
+double Package::getWeight() const
+{
+   return weight;
+}
+void Package::setCostPerOunce( double cost )
+{
+   costPerOunce = ( cost < 0.0 ) ? 0.0 : cost;
+}
+double Package::getCostPerOunce() const
+{
+   return costPerOunce;
+}
+double Package::calculateCost() const
+{
+   return getWeight() * getCostPerOunce();
 }

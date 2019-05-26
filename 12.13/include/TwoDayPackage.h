@@ -1,24 +1,20 @@
-#ifndef TWODAYPACKAGE_H
-#define TWODAYPACKAGE_H
+#ifndef TWODAY_H
+#define TWODAY_H
 
-#include<iostream>
-#include"package.h"
+#include "Package.h"
 
 class TwoDayPackage : public Package
 {
 public:
-    TwoDayPackage(const std::string & p_n, const std::string &r_n, const std::string &p_l,const std::string &r_l,
-                  int p_c,int r_c,int w,int p,int t_s_p);
+   TwoDayPackage( const string &, const string &, const string &,
+      const string &, int, const string &, const string &, const string &,
+      const string &, int, double, double, double );
 
-    double calculate__cost();
-    void set_two_price(int t_s_p);
-    int get_two_price() const;
+   void setFlatFee( double );
+   double getFlatFee() const;
 
-    virtual void print() const override;
-
+   double calculateCost() const;
 private:
-    int twoday_service_price;
-
+   double flatFee;
 };
-
 #endif

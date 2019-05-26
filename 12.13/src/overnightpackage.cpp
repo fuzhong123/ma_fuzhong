@@ -1,35 +1,25 @@
-#include<iostream>
-#include"overnightpackage.h"
-using namespace std;
-
-
-OvernightPackage::OvernightPackage(const std::string & p_n, const std::string &r_n, const std::string &p_l,const std::string &r_l,
-                  int p_c,int r_c,int w,int p,int o_p)
-    :Package(p_n,r_n,p_l,r_l,p_c,r_c,w,p)
+#include "OvernightPackage.h"
+OvernightPackage::OvernightPackage( const string &sName,
+   const string &sAddress, const string &sCity, const string &sState,
+   int sZIP, const string &rName, const string &rAddress,
+   const string &rCity, const string &rState, int rZIP,
+   double w, double cost, double fee )
+   : Package( sName, sAddress, sCity, sState, sZIP,
+      rName, rAddress, rCity, rState, rZIP, w, cost )
 {
-    set_overnight_price(o_p);
-}
-
-void OvernightPackage::set_overnight_price(int o_p)
-{
-    overnight_price=o_p;
-}
-int OvernightPackage::get_overnight_price() const
-{
-    return overnight_price;
+   setOvernightFeePerOunce( fee );
 }
 
 
-double OvernightPackage::calculate_cost()
+void OvernightPackage::setOvernightFeePerOunce( double overnightFee )
 {
-    return (Package::get_price()+get_overnight_price())*Package::get_weight();
+   overnightFeePerOunce = ( overnightFee < 0.0 ) ? 0.0 : overnightFee;
 }
-
-void OvernightPackage::print() const
+double OvernightPackage::getOvernightFeePerOunce() const
 {
-    cout<<"post 3:"<<endl;
-    Package::print();
-    cout<<"over night price of each kilo: "<<get_overnight_price();
-    cout<<"price of all: "<<calculate_cost()<<endl;
-    cout<<endl;
+   return overnightFeePerOunce;
+}
+double OvernightPackage::calculateCost() const
+{
+   return getWeight() * ( getCostPerOunce() + getOvernightFeePerOunce() );
 }

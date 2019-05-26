@@ -1,51 +1,56 @@
 #ifndef PACKAGE_H
 #define PACKAGE_H
-#include<iostream>
 
- class Package
- {
- public:
-     Package(const std::string & p_n, const std::string &r_n, const std::string &p_l,const std::string &r_l,
-             int p_c,int r_c,int w,int p);
+#include <string>
+using namespace std;
 
-     double calculate_cost();
+class Package
+{
+public:
+   Package( const string &, const string &, const string &,
+      const string &, int, const string &, const string &, const string &,
+      const string &, int, double, double );
 
-     void set_post_name(const std::string &p_n);
-     std::string get_post_name() const;
+   void setSenderName( const string & );
+   string getSenderName() const;
+   void setSenderAddress( const string & );
+   string getSenderAddress() const;
+   void setSenderCity( const string & );
+   string getSenderCity() const;
+   void setSenderState( const string & );
+   string getSenderState() const;
+   void setSenderZIP( int );
+   int getSenderZIP() const;
+   void setRecipientName( const string & );
+   string getRecipientName() const;
+   void setRecipientAddress( const string & );
+   string getRecipientAddress() const;
+   void setRecipientCity( const string & );
+   string getRecipientCity() const;
+   void setRecipientState( const string & );
+   string getRecipientState() const;
+   void setRecipientZIP( int );
+   int getRecipientZIP() const;
+   void setWeight( double );
+   double getWeight() const;
+   void setCostPerOunce( double );
+   double getCostPerOunce() const;
 
-     void set_receive_name(const std::string &r_n);
-     std::string get_receive_name() const;
+   double calculateCost() const;
+private:
 
-     void set_post_location(const std::string &p_l);
-     std::string get_post_location() const;
+   string senderName;
+   string senderAddress;
+   string senderCity;
+   string senderState;
+   int senderZIP;
+   string recipientName;
+   string recipientAddress;
+   string recipientCity;
+   string recipientState;
+   int recipientZIP;
 
-     void set_receive_location(const std::string &r_l);
-     std::string get_receive_location() const;
-
-     void set_post_code(int p_c);
-     int get_post_code() const;
-
-     void set_receive_code(int r_c);
-     int get_receive_code() const;
-
-     void set_weight(int w);
-     int get_weight() const;
-
-     void set_price(int p);
-     int  get_price() const;
-
-     virtual void print() const ;
-
-
- private:
-     std::string post_name;
-     std::string receive_name;
-     std::string post_location;
-     std::string receive_location;
-     int post_code;
-     int receive_code;
-     int weight;
-     int price;
-
- };
+   double weight;
+   double costPerOunce;
+};
 #endif
